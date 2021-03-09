@@ -1,0 +1,70 @@
+// Classes and Parent Child Relationships
+// "Composite" Design Pattern
+    // goes hand in hand with MVC -> manage state
+// Managing Objects(visually)
+
+//can take parameters
+function setSize() {
+
+}
+
+//does not take parameters
+//a class is an object
+class Cake {
+    //this is where parameters of a class can go
+    //think of a constructor as a recipe
+    constructor(filling, batter, layers) {
+        this.filling = filling
+        this.batterType = batter
+        this.numLayers = layers
+        this.candles = 10
+
+    // could add this:
+    // only needed if I am running this function on the html (on click)
+    this.bakeCake = this.bakeCake.bind(this) //the last this being the constructor of the cake Class
+    }
+    bakeCake() {
+        console.log(this)// is not referring to html, its referring to the class
+    }
+    //helper functions 
+    setFilling(newFlavor){
+        this.filling = newFlavor
+
+    }
+    addLayers(newAmountOfLayers){
+        this.numLayers += newAmountOfLayers
+
+    }
+}
+
+class Candle{
+    constructor(candleTyle, color, sparkle) {
+        //parameters are like let variables that can change
+        this.candleType = candleType
+        this.color = color
+        this.sparkle = sparkle
+        //hard coding are like const that will not change 
+        this.stubbornness = 0.3
+        this.currentlyLit = false
+    }
+    //get these explained again on their purpose in the class???
+    lightCandle(){
+        this.currentlyLit = true
+    }
+    extinguish() {
+        this.currentlyLit = false
+    }
+}
+
+let yellowCake = new Cake("chocolate", "yellow", 3)
+console.log(yellowCake)
+
+can use M-V-C to construct the classes for each part 
+Ex.
+
+class Model{
+    constructor(move, playerTurn) {
+        this.moves = moves
+        this.playerTurn = playerTurn
+    }
+}

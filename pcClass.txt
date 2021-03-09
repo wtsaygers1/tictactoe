@@ -1,0 +1,107 @@
+class Tile{
+
+    //Model
+        constructor(){
+            this.value = ""
+        }
+
+    //View
+        a single tile of a grid
+        value: "" || "X" || "O"
+
+    //Controller
+        addEventListener that inputs the value of the current players turn into the tile, disables any future click of that tile, and switches to next player
+            helper function that does all this
+            addEventListener("click", render())
+            function render() {
+                If (player1) {
+                    return "X"
+                } else {
+                    return "O"
+                }
+                disables click
+                moves += moves
+            }
+        
+        //helper function for when game is reset -- the tile needs to know that it goes back 
+        //to a value of an empty string
+        function resetTile() {
+            displays empty tile
+            enables click
+        }
+}
+
+class Board{
+
+    //Model
+        constructor() {
+            this.header = "Tic Tac Toe"
+            this.player1 = "X"
+            this.player2 = "O"
+            this.board = []
+            this.moves = 0
+            this.restart = button
+            this.result = modal
+        }
+
+    //View
+        the title of the game
+        the current players turn 
+        a grid 3x3 (this will be dynamically created with JS)
+        the restart button
+        modal of game result message
+
+    //Controller
+    function displayBoard(){
+        board display
+        all tiles value = ""
+        all tiles click enabled
+    }
+
+    for loop that will check for win conditions
+        need to keep track of number of moves
+        run when moves > 5
+        Conditional
+            needs to know what the win conditions are
+            needs to know if cat's game (all clicks are disabled)
+            switch players turn if none of the above are met
+
+    addEventListener for the restart button
+        addEventListener("click", resetBoard)
+        functioin resetBoard(){
+            modal display none
+            resetTile() for each Tile
+            stretch (increment players record)
+        }
+
+    //helper function that generates HTML
+        //type is the element
+    function generateHTML(type, )
+}
+
+class App {
+    
+    //Model
+    constructor(){
+    dynamically render header
+    dynamically render player1 and player2
+    function displayBoard()
+    dynamically render restart button
+    modal display none
+    }
+
+    //View
+    header
+    players
+    board
+    restart button
+
+    //Constructor
+    function init(){
+        render board
+        player selection (start as X always starts / stretch with randomize)
+        //how do I connect moves to the Tile click
+        moves(is this an object) = 0
+    }
+}
+

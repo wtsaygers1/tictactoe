@@ -1,0 +1,32 @@
+// Generating HTML with JavaScript
+//Dynamic rendering
+
+const app = document.getElementById("app")
+
+const text = document.createTextNode("...") //makes a string of text
+document.appendChild(text)
+//in this canse 
+app.appendChild(text)
+
+element.innerText = "..."
+app.appendChild(element) 
+
+innerHTML =
+
+const element = document.createElement("div")
+
+// can use classList on its own but should reserve it for one of the classList special methods
+// need to separate classList with a comma
+element.classList.add()
+element.classList.remove()
+element.id = ""
+element.addEventListener("click", )
+
+// 
+element.className = "col border myclass"
+
+
+//add element to parent AFTER all changes have been made (talking about appendChild)
+
+
+

@@ -1,0 +1,187 @@
+1. what goes in the view? (connected with model)
+
+container
+    row
+        header
+    row    
+        both players
+            show their record W-D-L (stretch goal)
+            show whose turn it is
+    
+    row for the actual grid
+        col (acts as container)
+            1 row
+                9 cols - size 4
+                Tile (synonymous with col)
+                    X or O or Blank
+    row
+        surrender/restart buttonm(depending on state)
+            (if game !concluded display surrender, else display restart)
+        modal (show the game result) 
+
+2. What goes in the model? (connected with view)
+
+whose turn it is: 
+    "x" || "o" as a string
+    count (0, 1, 2... -> n) (n = 9)
+        dual purpose to keep track of game moves
+    boolean: true || false x === true, but o === false
+        if x === true, then player1 turn, else player2 turn
+        //can use the below to randomize which player goes first
+        if(Math.random() > 0.5) {
+            return x === false
+        } else {
+            return x === true
+        }
+
+we need to know who won
+    number (based on the sum of all the rows, columns, diags)
+        // use a controller method that would set the state of this number
+    
+    store turns in an array
+        (0 for no click, 1 for x, -1 for o)
+        ("" for no click, "X" for x, "O" for o)
+        what the array looks like
+        [
+            0, 1, 2,
+            3, 4, 5,
+            6, 7, 8
+        ] - idea 3 (stores 9)
+
+        // optional: create a tile class to keep track of all the tiles
+        Tile: (class) 
+        ("" for no click, "X" for x, "O" for o)
+            {
+                "" || "x" || "o"
+                clicked? - can be abstracted
+                "who clicked" - can be abstracted
+                where it is? - can be abstracted
+                bgColor:  "" || "x" || "o" - can be abstracted??? maybe
+            }
+        
+        [
+            Tile, Tile, Tile,
+            Tile, Tile, Tile,
+            Tile, Tile, Tile
+        ]
+
+        Board: (class)
+        {
+            is game complete?
+            how many tiles do I have?
+            all tiles: array
+            current state of all my tiles? - can be abstracted
+        }
+        
+        // to verbose, but it is an option
+        {
+            turn1: {
+                player:"x"
+                location: ...
+            },
+            turn2: {
+                player: "o"
+                location:...
+            }
+        }
+
+Parent / Child relationships
+parent has many children
+children can only have ONE Parent
+children can have many siblings
+Only ever have 3 layers deep in JavaScript for simplicity
+
+
+tiles could have states
+    boolean: true / false to dicatate the tile clickability
+    on the finish of the game, lock the tile
+    on any in game click, lock the specific tile
+
+
+3. What goes in the controller? (connected to view and model)
+
+initialize
+    // pseudocode this
+    // about the length of a kata
+helper function for dynamic rendering
+    // generate Element
+render method
+select x or o (stretch)
+
+function init() {
+    render container
+    render header
+    render players
+        player1 0-0-0 and player2 0-0-0 (W-D-L)
+    render board
+    render surrender/restart button
+}
+
+container:
+let container = document.createElement("container");
+document.body.appendChild(container);
+
+header:
+let header = document.getElementById("header");
+header.createElement("header");
+header.className("row")
+document.body.appendChild("header")
+
+tile click event listener
+   board[i].addEventListener("click", mark())
+
+   function mark() {
+       if (x === true) {
+           return board[i] = "X"
+       } else {
+           return board[i] = "O"
+       }
+       board[i] click = disabled
+       switch current player
+   }
+
+   //every time a tile is clicked a render function must run filling that tile
+   //checking for a win condition or if all tiles are occupied
+
+win condition
+    start when moves > 5
+    for (let i = 0; i < 9; i++)
+        if (i === i+1 && i+2) {
+            return end()
+        } else if (i === i+3 && i+6) {
+            return end()
+        } else if (i === i+4 && i+8) {
+            return end()
+        } else if (i+2 === i+4 && i+6) {
+            return end()
+        } else {
+            return switch players turn
+        }
+
+function end() {
+    modal w/ winner message
+    all tiles click = disabled
+    restart button displayed
+}
+
+If all tiles occupied
+function tie() {
+    modal w/ cat's game message
+    all tiles click = disabled
+    restart button displayed
+}
+
+restart button
+    restartBtn.addEventListener("click", newGame())
+    surrender button (stretch goal)
+    game history (stretch goal)
+
+
+set tile clickability
+switch current player
+tile click event listener
+restart click event listener
+select x or o (stretch goal)
+
+
+    
